@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { 
   Home, Package, ShoppingCart, Archive, Users, Truck, 
-  Bell, BarChart3, Settings, LogOut, Menu, X, ChevronDown
+  Bell, BarChart3, Settings, LogOut, Menu, X, ChevronDown, DollarSign
 } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -16,10 +16,11 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [inventoryOpen, setInventoryOpen] = useState(false);
+  const [financeOpen, setFinanceOpen] = useState(false);
 
   const menuItems = [
     { icon: Home, label: 'Dashboard', path: '/dashboard', badge: null, hasSubmenu: false },
-        { icon: Users, label: 'Customers', path: '/customers', badge: null, hasSubmenu: false },
+    { icon: Users, label: 'Customers', path: '/customers', badge: null, hasSubmenu: false },
     { icon: Package, label: 'Products', path: '/products', badge: null, hasSubmenu: false },
     { icon: ShoppingCart, label: 'Orders', path: '/orders', badge: null, hasSubmenu: false },
     { 
@@ -28,12 +29,27 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
       path: '/inventory', 
       badge: null, 
       hasSubmenu: true,
+      submenuState: inventoryOpen,
+      setSubmenuState: setInventoryOpen,
       submenu: [
         { label: 'Products', path: '/inventory/products' },
         { label: 'Materials', path: '/inventory/materials' }
       ]
     },
     { icon: Truck, label: 'Suppliers', path: '/suppliers', badge: null, hasSubmenu: false },
+    { 
+      icon: DollarSign, 
+      label: 'Finance', 
+      path: '/finance', 
+      badge: null, 
+      hasSubmenu: true,
+      submenuState: financeOpen,
+      setSubmenuState: setFinanceOpen,
+      submenu: [
+        { label: 'Sales & Revenue', path: '/finance/sales' },
+        { label: 'Expenses & Purchases', path: '/finance/expenses' }
+      ]
+    },
     { icon: BarChart3, label: 'Reports', path: '/reports', badge: null, hasSubmenu: false }
   ];
 
@@ -94,8 +110,8 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           <div key={item.label}>
             <button
               onClick={() => {
-                if (item.hasSubmenu) {
-                  setInventoryOpen(!inventoryOpen);
+                if (item.hasSubmenu && item.setSubmenuState) {
+                  item.setSubmenuState(!item.submenuState);
                 } else {
                   handleNavigation(item.path);
                 }
@@ -114,14 +130,14 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                     </span>
                   )}
                   {item.hasSubmenu && (
-                    <ChevronDown className={`w-4 h-4 transition-transform ${inventoryOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform ${item.submenuState ? 'rotate-180' : ''}`} />
                   )}
                 </>
               )}
             </button>
             
             {/* Submenu */}
-            {item.hasSubmenu && isOpen && inventoryOpen && (
+            {item.hasSubmenu && isOpen && item.submenuState && (
               <div className="bg-gray-950">
                 {item.submenu?.map((subItem) => (
                   <button
