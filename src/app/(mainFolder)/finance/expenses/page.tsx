@@ -9,7 +9,7 @@ export default function Customers() {
     <div className="p-6">
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Customers</h1>
+        <h1 className="text-2xl font-bold text-gray-900">expenses</h1>
         
       </div>
 
