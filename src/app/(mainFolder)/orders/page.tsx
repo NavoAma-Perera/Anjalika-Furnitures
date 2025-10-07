@@ -2,8 +2,19 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import { OrdersTable } from "@/components/OrdersTable";
 import { NewOrderDialog } from "@/components/NewOrderDialog";
@@ -20,7 +31,7 @@ export default function Orders() {
       id: "ORD-1045",
       customer: "Hasini Perera",
       date: "2025-08-12",
-      total: 145000.00,
+      total: 145000.0,
       status: "Paid",
       items: [
         { product: "Teak Wood Dining Table", quantity: 1, price: 85000 },
@@ -31,17 +42,15 @@ export default function Orders() {
       id: "ORD-1044",
       customer: "Imesh Fernando",
       date: "2025-08-11",
-      total: 82500.00,
+      total: 82500.0,
       status: "Pending",
-      items: [
-        { product: "Mahogany Wardrobe", quantity: 1, price: 82500 },
-      ],
+      items: [{ product: "Mahogany Wardrobe", quantity: 1, price: 82500 }],
     },
     {
       id: "ORD-1043",
       customer: "Nimali Jayasuriya",
       date: "2025-08-09",
-      total: 230000.00,
+      total: 230000.0,
       status: "Cancelled",
       items: [
         { product: "Teak Wood Dining Table", quantity: 2, price: 85000 },
@@ -52,17 +61,15 @@ export default function Orders() {
       id: "ORD-1042",
       customer: "Kamal Silva",
       date: "2025-08-08",
-      total: 125000.00,
+      total: 125000.0,
       status: "In Production",
-      items: [
-        { product: "Mahogany Wardrobe", quantity: 1, price: 125000 },
-      ],
+      items: [{ product: "Mahogany Wardrobe", quantity: 1, price: 125000 }],
     },
     {
       id: "ORD-1041",
       customer: "Dilini Wickramasinghe",
       date: "2025-08-07",
-      total: 90000.00,
+      total: 90000.0,
       status: "Ready",
       items: [
         { product: "Oak Wood Chair Set (4pcs)", quantity: 2, price: 45000 },
@@ -72,7 +79,7 @@ export default function Orders() {
       id: "ORD-1040",
       customer: "Ruwan Perera",
       date: "2025-08-06",
-      total: 155000.00,
+      total: 155000.0,
       status: "Delivered",
       items: [
         { product: "Teak Wood Dining Table", quantity: 1, price: 85000 },
@@ -109,10 +116,15 @@ export default function Orders() {
         <div className="flex justify-between items-start mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Orders</h1>
-            <p className="text-gray-600">Review, create, and manage customer orders</p>
+            <p className="text-gray-600">
+              Review, create, and manage customer orders
+            </p>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => setNewOrderOpen(true)}>
+            <Button
+              className="bg-amber-600 hover:bg-amber-700 text-white"
+              onClick={() => setNewOrderOpen(true)}
+            >
               <Plus className="h-4 w-4 mr-2" />
               New Order
             </Button>
@@ -124,10 +136,12 @@ export default function Orders() {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">All Orders</h2>
           </div>
-          
+
           <div className="grid grid-cols-4 gap-4">
             <div>
-              <label className="text-sm text-gray-600 mb-2 block font-medium">Status</label>
+              <label className="text-sm text-gray-600 mb-2 block font-medium">
+                Status
+              </label>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="border-gray-300">
                   <SelectValue />
@@ -159,13 +173,28 @@ export default function Orders() {
         {/* Pagination */}
         <div className="flex justify-between items-center mt-6">
           <p className="text-sm text-gray-600">
-            Showing 1-{orders.filter(order => statusFilter === "All" || order.status === statusFilter).length} of {orders.length} orders
+            Showing 1-
+            {
+              orders.filter(
+                (order) =>
+                  statusFilter === "All" || order.status === statusFilter
+              ).length
+            }{" "}
+            of {orders.length} orders
           </p>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" disabled className="border-gray-300">
+            <Button
+              variant="outline"
+              size="sm"
+              disabled
+              className="border-gray-300"
+            >
               Prev
             </Button>
-            <Button size="sm" className="bg-amber-600 hover:bg-amber-700 text-white">
+            <Button
+              size="sm"
+              className="bg-amber-600 hover:bg-amber-700 text-white"
+            >
               1
             </Button>
             <Button variant="outline" size="sm" className="border-gray-300">
@@ -190,58 +219,89 @@ export default function Orders() {
 
         {/* Order Details Dialog */}
         {selectedOrder && (
-          <Dialog open={!!selectedOrder} onOpenChange={() => setSelectedOrder(null)}>
+          <Dialog
+            open={!!selectedOrder}
+            onOpenChange={() => setSelectedOrder(null)}
+          >
             <DialogContent className="max-w-2xl">
               <DialogHeader>
                 <DialogTitle>Order Details - #{selectedOrder.id}</DialogTitle>
               </DialogHeader>
-              
+
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm text-gray-600">Customer</p>
-                    <p className="font-medium text-gray-900">{selectedOrder.customer}</p>
+                    <p className="font-medium text-gray-900">
+                      {selectedOrder.customer}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Date</p>
-                    <p className="font-medium text-gray-900">{selectedOrder.date}</p>
+                    <p className="font-medium text-gray-900">
+                      {selectedOrder.date}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Total</p>
                     <p className="font-medium text-gray-900">
-                      LKR {selectedOrder.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                      LKR{" "}
+                      {selectedOrder.total.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                      })}
                     </p>
                   </div>
                   <div>
                     <p className="text-sm text-gray-600 mb-2">Status</p>
-                    <span className={getStatusBadgeClasses(selectedOrder.status)}>
+                    <span
+                      className={getStatusBadgeClasses(selectedOrder.status)}
+                    >
                       {selectedOrder.status}
                     </span>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold mb-3 text-gray-900">Order Items</h3>
+                  <h3 className="font-semibold mb-3 text-gray-900">
+                    Order Items
+                  </h3>
                   <div className="border border-gray-200 rounded-lg overflow-hidden">
                     <table className="w-full">
                       <thead className="bg-gray-50">
                         <tr>
-                          <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Product</th>
-                          <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Quantity</th>
-                          <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Price</th>
-                          <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Subtotal</th>
+                          <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">
+                            Product
+                          </th>
+                          <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                            Quantity
+                          </th>
+                          <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                            Price
+                          </th>
+                          <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">
+                            Subtotal
+                          </th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-200">
                         {selectedOrder.items.map((item, index) => (
                           <tr key={index}>
-                            <td className="py-3 px-4 text-sm text-gray-900">{item.product}</td>
-                            <td className="py-3 px-4 text-sm text-gray-900 text-right">{item.quantity}</td>
+                            <td className="py-3 px-4 text-sm text-gray-900">
+                              {item.product}
+                            </td>
                             <td className="py-3 px-4 text-sm text-gray-900 text-right">
-                              {item.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                              {item.quantity}
+                            </td>
+                            <td className="py-3 px-4 text-sm text-gray-900 text-right">
+                              {item.price.toLocaleString("en-US", {
+                                minimumFractionDigits: 2,
+                              })}
                             </td>
                             <td className="py-3 px-4 text-sm text-gray-900 text-right font-medium">
-                              {(item.quantity * item.price).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                              {(item.quantity * item.price).toLocaleString(
+                                "en-US",
+                                { minimumFractionDigits: 2 }
+                              )}
                             </td>
                           </tr>
                         ))}
