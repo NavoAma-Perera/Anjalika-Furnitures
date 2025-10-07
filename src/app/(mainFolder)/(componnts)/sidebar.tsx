@@ -60,7 +60,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
   const handleLogout = () => {
     sessionStorage.removeItem('userEmail');
     sessionStorage.removeItem('isAuthenticated');
-    router.push('/login');
+    router.push('/');
   };
 
   const isActive = (path: string) => {
