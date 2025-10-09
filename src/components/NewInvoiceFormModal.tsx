@@ -112,7 +112,7 @@ export default function NewInvoiceFormModal({
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
                 />
               </div>
               <div className="col-span-2">
@@ -122,7 +122,7 @@ export default function NewInvoiceFormModal({
                   value={customer}
                   onChange={(e) => setCustomer(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500"
                   placeholder="Customer name"
                 />
               </div>
@@ -224,7 +224,7 @@ export default function NewInvoiceFormModal({
                   max={total}
                   value={paid}
                   onChange={(e) => setPaid(Number(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-800"
                 />
               </div>
             </div>
@@ -256,7 +256,7 @@ export default function NewInvoiceFormModal({
               </button>
               <button
                 type="submit"
-                className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                className="flex-1 px-4 py-2 bg-orange-700 text-white rounded-lg hover:bg-orange-700"
               >
                 Create Invoice
               </button>

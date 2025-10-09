@@ -48,8 +48,8 @@ export function InvoiceDialog({ invoiceOrder, setInvoiceOrder }: InvoiceDialogPr
           <div className="text-center border-b border-gray-200 pb-6">
             <h1 className="text-3xl font-bold text-amber-600 mb-2">Anjalika Furniture</h1>
             <p className="text-sm text-gray-600">
-              123 Furniture Lane, Colombo, Sri Lanka<br />
-              Tel: +94 11 234 5678 | Email: info@anjalikafurniture.lk
+              No.479B , De Soysa Rd, Molpe ,Moratuwa,Sri Lanka<br />
+              Tel: +94 77 344 7966| Email: info@anjalikafurniture.lk
             </p>
           </div>
 

@@ -313,7 +313,7 @@ export default function MaterialsInventory() {
           <h1 className="text-3xl font-bold text-gray-900">Materials Inventory</h1>
           <p className="text-gray-600 mt-1">Track materials, stock levels, and consumption</p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setAddDialogOpen(true)}>
+        <Button className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => setAddDialogOpen(true)}>
           Add New Material
         </Button>
       </div>
@@ -326,7 +326,7 @@ export default function MaterialsInventory() {
               <h3 className="text-sm font-medium text-gray-500 mb-2">Total Materials</h3>
               <p className="text-3xl font-bold text-gray-900">{totalMaterials}</p>
             </div>
-            <Package className="w-10 h-10 text-blue-500" />
+            <Package className="w-10 h-10 text-amber-500" />
           </div>
         </div>
         <div className="bg-white rounded-lg border shadow-sm p-6">
@@ -455,7 +455,7 @@ export default function MaterialsInventory() {
                           size="sm"
                           variant="ghost"
                           onClick={() => openEditDialog(material)}
-                          className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+                          className="text-amber-600 hover:text-amber-700 hover:bg-amber-50"
                         >
                           <Pencil className="w-4 h-4" />
                         </Button>
@@ -498,7 +498,7 @@ export default function MaterialsInventory() {
                   key={page}
                   variant="outline"
                   size="sm"
-                  className={currentPage === page ? "bg-blue-600 text-white hover:bg-blue-700" : "text-gray-600"}
+                  className={currentPage === page ? "bg-amber-600 text-white hover:bg-amber-700" : "text-gray-600"}
                   onClick={() => handlePageChange(page)}
                 >
                   {page}
@@ -648,7 +648,7 @@ export default function MaterialsInventory() {
               >
                 Cancel
               </Button>
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button type="submit" className="bg-amber-600 hover:bg-amber-700 text-white">
                 Add Material
               </Button>
             </DialogFooter>
@@ -782,7 +782,7 @@ export default function MaterialsInventory() {
               >
                 Cancel
               </Button>
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button type="submit" className="bg-amber-600 hover:bg-amber700 text-white">
                 Update Material
               </Button>
             </DialogFooter>

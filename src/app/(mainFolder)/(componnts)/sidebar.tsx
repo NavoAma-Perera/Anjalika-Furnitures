@@ -6,6 +6,7 @@ import {
   Bell, BarChart3, Settings, LogOut, Menu, X, ChevronDown, DollarSign
 } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
+import Image from 'next/image'; // ✅ added for logo image
 
 interface SidebarProps {
   isOpen: boolean;
@@ -74,8 +75,15 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
         {isOpen ? (
           <>
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-br from-amber-700 to-orange-600 rounded-lg flex items-center justify-center">
-                <span className="text-xl font-bold">A</span>
+              {/* ✅ Replaced letter A with logo image */}
+              <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-gray-800">
+                <Image 
+                  src="/logo.png" 
+                  alt="Anjalika Logo"
+                  width={40}
+                  height={40}
+                  className="object-cover"
+                />
               </div>
               <div className="ml-3">
                 <h1 className="text-lg font-bold">Anjalika</h1>
@@ -91,8 +99,15 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
           </>
         ) : (
           <div className="flex flex-col items-center space-y-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-amber-700 to-orange-600 rounded-lg flex items-center justify-center">
-              <span className="text-xl font-bold">A</span>
+            {/* ✅ Replaced letter A with logo image */}
+            <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-gray-800">
+              <Image 
+                src="/logo.png" 
+                alt="Anjalika Logo"
+                width={40}
+                height={40}
+                className="object-cover"
+              />
             </div>
             <button
               onClick={onToggle}
