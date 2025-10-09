@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export default function Reports() {
   const [selectedPeriod, setSelectedPeriod] = useState('month');
-  const [activeReport, setActiveReport] = useState(null);
+const [activeReport, setActiveReport] = useState<string | null>(null);
   const [reportDateRange, setReportDateRange] = useState('month');
   const [reportCategory, setReportCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
